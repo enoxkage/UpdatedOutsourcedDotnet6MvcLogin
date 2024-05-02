@@ -1,0 +1,116 @@
+﻿@model Dotnet6MvcLogin.Models.DTO.LoginModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>login</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+
+form {
+  border: 3px solid #f1f1f1;
+  width:60%;
+  margin:auto;
+  margin-top:10%;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #aa048b;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.container {
+  padding: 16px;
+}
+
+.msg{
+  padding: 0px;
+}
+
+
+.err{
+    color:red;
+}
+
+        #Box {
+            margin-bottom: 0;
+            padding: 10px;
+            width: 98%;
+            border: 1px solid black;
+            text-align: center;
+            color: black;
+            z-index: 3;
+        }
+
+
+        #connection-message {
+            position: fixed;
+            bottom: 0;
+            color: #fff;
+            text-align: center;
+            width: 100%;
+            z-index: 10;
+        }
+
+</style>
+ 
+</head>
+<body>
+	
+    <div id="Box">
+        <span></span>
+    </div>
+
+<form asp-action="Login" method="post">
+  
+  <div class="container">
+    <label asp-for="Username"><b>Username</b></label>
+    <input type="text" asp-for="Username" placeholder="Enter Username">
+            <div class="msg">
+            
+            </div>
+
+            
+
+    <label asp-for="Password"><b>Password</b></label>
+   <input  type="password" asp-for="Password" placeholder="Enter Password">
+            <div class="msg">
+            
+            </div>
+
+
+    @if(TempData["msg"]!=null){
+                <div class="msg">@TempData["msg"]</div>
+    }
+
+    <button type="submit">Login</button>
+    <a class="text-alert" href="/UserAuthentication/Registration">Not a user? Signup</a>
+  </div>
+</form>
+
+    <div id="connection-message">
+    </div>
+    <script src="/Scripts/conSpeed.js"></script>
+
+    <script type="text/javascript" src="~/Scripts/InternetConnectionStatus.js"></script>
+</body>
+</html>
